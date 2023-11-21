@@ -23,5 +23,15 @@ public class TodoController : ControllerBase
     {
        
     }
+    
+    [HttpPost]
+    public TodoItem AddTodo()
+    {
+
+    }
     */
+    [HttpGet(Name ="hello")]
+    public string Hello(){
+        return "Hello world!";
+    }
 }
