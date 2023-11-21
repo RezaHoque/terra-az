@@ -4,7 +4,7 @@ using ToDoApi.Services;
 namespace ToDoApi.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/[controller]/[action]")]
 public class TodoController : ControllerBase
 {
     private readonly IConfiguration _config;
@@ -32,6 +32,6 @@ public class TodoController : ControllerBase
     */
     [HttpGet(Name ="hello")]
     public string Hello(){
-        return "Hello world!";
+        return "Hello world! How are you doing";
     }
 }
