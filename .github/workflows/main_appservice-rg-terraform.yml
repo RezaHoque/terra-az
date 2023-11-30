@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: acrtodorgterraform.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_5ed5fc7880d240669cd295f5ea9d5256 }}/todoapi:${{ github.sha }}
+        tags: acrtodorgterraform.azurecr.io/mytodoapi_5ed5fc7880d240669cd295f5ea9d5256/todoapi:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
