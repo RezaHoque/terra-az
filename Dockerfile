@@ -12,15 +12,16 @@ USER appuser
 FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 ARG configuration=Release
 WORKDIR /src
-COPY ["ToDoApi.csproj", "./"]
-RUN dotnet restore "ToDoApi.csproj"
+#COPY ["ToDoApi.csproj", "./"]
 COPY . .
+RUN dotnet restore "./ToDoApi/ToDoApi.csproj"
+
 WORKDIR "/src/."
-RUN dotnet build "ToDoApi.csproj" -c $configuration -o /app/build
+RUN dotnet build "./ToDoApi/ToDoApi.csproj" -c $configuration -o /app/build
 
 FROM build AS publish
 ARG configuration=Release
-RUN dotnet publish "ToDoApi.csproj" -c $configuration -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./ToDoApi/ToDoApi.csproj" -c $configuration -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
