@@ -34,4 +34,9 @@ public class TodoController : ControllerBase
     public string Hello(){
         return "Hello world! How are you doing";
     }
+    [HttpGet(Name ="add")]
+    public string add(string a, string b){
+        var c=Convert.ToInt32(a)+Convert.ToInt32(b);
+        return c.ToString();
+    }
 }
