@@ -1,0 +1,27 @@
+version: "3.4"
+services:
+  db:
+    container_name: todo-db
+    image: mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04
+    ports:
+      - "5002:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Password@123#
+ 
+  todoapi:
+    container_name: todo-api
+    image: terra/todoapi
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_NAME=TodoAppDb
+      - DB_SA_PASSWORD=Password@123#
+    
+
